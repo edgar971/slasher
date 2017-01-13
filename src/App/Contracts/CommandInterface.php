@@ -2,15 +2,43 @@
 
 namespace Envano\Slasher\App\Contracts;
 
+
 interface CommandInterface {
 
-    public function getCommand();
+    /**
+     * @return string
+     */
+    public function getCommandName();
 
-    public function getArguments();
+    /**
+     * @return string
+     */
+    public function getSignature();
 
-    public function getOriginalText();
+    /**
+     * @return string
+     */
+    public function getDescription();
 
+    /**
+     * @return
+     */
     public function getRequest();
+
+    /**
+     * @return mixed
+     */
+    public function getInput();
+
+    /**
+     * @return mixed
+     */
+    public function getOutput();
+
+    /**
+     * @return mixed
+     */
+    public function run();
 
 
 }

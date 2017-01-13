@@ -2,63 +2,98 @@
 
 namespace Envano\Slasher\App;
 
-use App\Http\Requests\Request;
+use Illuminate\Http\Request;
 use Envano\Slasher\App\Contracts\CommandInterface;
-use Illuminate\Console\Parser;
+
 
 class Command implements CommandInterface {
 
     /**
-     * @var Request $request
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @var
+     */
+    protected $input;
+
+    /**
+     * @var
+     */
+    protected $outout;
+
+    /**
+     * @var
+     */
+    protected $signature;
+
+    /**
+     * @var
+     */
+    protected $definition;
+
+    /**
+     * @var
      */
     protected $request;
 
-    /**
-     * @var string
-     */
-    protected $text;
 
     /**
-     * @var string
+     * @inheritDoc
      */
-    protected $command;
-
-    /**
-     * @var array
-     */
-    protected $argument;
-
-    /**
-     *
-     * @param $text
-     */
-    protected function parseText($text) {
-
-        list($name, $arguments, $options) = Parser::parse($text);
-
-
-    }
-
-
-    public function getCommand()
+    public function getCommandName()
     {
         // TODO: Implement getCommand() method.
     }
 
-    public function getArguments()
+    /**
+     * @inheritDoc
+     */
+    public function getSignature()
     {
-        // TODO: Implement getArguments() method.
+        // TODO: Implement getDefinition() method.
     }
 
-    public function getOriginalText()
+    /**
+     * @inheritDoc
+     */
+    public function getDescription()
     {
-        // TODO: Implement getOriginalText() method.
+        // TODO: Implement getDescription() method.
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getRequest()
     {
         // TODO: Implement getRequest() method.
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getInput()
+    {
+        // TODO: Implement getInput() method.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getOutput()
+    {
+        // TODO: Implement getOutput() method.
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function run() {
+        // TODO: Implement run() method.
+    }
+
 
 }
 

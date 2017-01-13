@@ -7,8 +7,8 @@ use Envano\Slasher\App\Contracts\SlasherInterface;
 
 class Slasher implements SlasherInterface {
 
-    public function handle(Request $request) {
 
+    public function handle(Request $request) {
 
 
 
