@@ -11,13 +11,15 @@ class InputParser implements InputParserInterface {
      */
     public static function parse($text) {
 
-        if(empty(trim($text,''))) return;
+        if(empty(trim($text,''))) return false;
 
         $arguments = self::parseArguments($text);
         $options = self::parseOptions($text);
         $command = self::parseCommandName($text);
 
         $input = new Input($text,$command,$arguments,$options);
+
+        return $input;
 
     }
 

@@ -14,11 +14,11 @@ class SlasherServiceProvider extends ServiceProvider {
      */
     public function register() {
 
-        $this->app->bind('slasher', function($app){
-
-            return new Slasher();
-
-        });
+//        $this->app->bind('slasher', function($app){
+//
+//            return new Slasher();
+//
+//        });
 
 
     }

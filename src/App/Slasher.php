@@ -42,7 +42,7 @@ class Slasher implements SlasherInterface {
         // Bootstrap and configure each command.
         foreach($this->commands as $command) {
 
-            var_dump($command);
+
 
         }
 
@@ -65,7 +65,6 @@ class Slasher implements SlasherInterface {
     protected function parseText($text) {
 
 
-
     }
 
 
@@ -75,7 +74,10 @@ class Slasher implements SlasherInterface {
      */
     public function run() {
 
+        $this->processCommands();
+
         // Get Text
+        $text = $this->processRequest($this->request);
 
         // Process input
             // @error out if missing text

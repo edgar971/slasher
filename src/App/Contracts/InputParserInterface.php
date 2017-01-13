@@ -6,7 +6,7 @@ interface InputParserInterface {
 
     /**
      * @param $text
-     * @return InputInterface
+     * @return InputInterface|bool
      */
     public static function parse($text);
 
