@@ -7,12 +7,92 @@ use Envano\Slasher\App\Contracts\SlasherInterface;
 
 class Slasher implements SlasherInterface {
 
+    /**
+     * The Slack/Mattermost commands provided by the application.
+     *
+     * @var array
+     */
+    protected $commands = [];
 
-    public function handle(Request $request) {
+    /**
+     * @var Request
+     */
+    protected $request;
+
+    /**
+     * @var string
+     */
+    protected $text;
+
+
+    /**
+     * @inheritDoc
+     */
+    public function getCommands() {
+
+        return $this->commands;
+
+    }
+
+    /**
+     *
+     */
+    protected function processCommands() {
+
+        // Bootstrap and configure each command.
+        foreach($this->commands as $command) {
+
+            var_dump($command);
+
+        }
+
+    }
+
+    protected function findCommand($name) {
 
 
 
     }
+
+
+    protected function processRequest(Request $request) {
+
+
+
+
+    }
+
+    protected function parseText($text) {
+
+
+
+    }
+
+
+
+        /**
+     * @inheritdoc
+     */
+    public function run() {
+
+        // Get Text
+
+        // Process input
+            // @error out if missing text
+
+        // Find command
+            // @error if missing command
+
+        // Execute command
+
+        // Return output
+
+
+    }
+
+
+
+
 
 
 }

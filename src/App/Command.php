@@ -2,6 +2,8 @@
 
 namespace Envano\Slasher\App;
 
+use Envano\Slasher\App\Contracts\InputInterface;
+use Envano\Slasher\App\Contracts\OutputInterface;
 use Illuminate\Http\Request;
 use Envano\Slasher\App\Contracts\CommandInterface;
 
@@ -14,29 +16,31 @@ class Command implements CommandInterface {
     protected $name;
 
     /**
-     * @var
+     * @var InputInterface
      */
     protected $input;
 
     /**
-     * @var
+     * @var OutputInterface
      */
     protected $outout;
 
     /**
-     * @var
+     * @var string
      */
     protected $signature;
 
-    /**
-     * @var
-     */
-    protected $definition;
 
     /**
-     * @var
+     * @var Request
      */
     protected $request;
+
+    /**
+     * The method called to run the comman
+     * @var string
+     */
+    protected $method = 'handle';
 
 
     /**
@@ -90,8 +94,16 @@ class Command implements CommandInterface {
     /**
      * @inheritDoc
      */
-    public function run() {
-        // TODO: Implement run() method.
+    public function execute() {
+
+        $exists =  method_exists($this, $this->method);
+
+        if($exists) {
+
+            return call_user_func_array([$this, $this->method],[]);
+
+        }
+
     }
 
 

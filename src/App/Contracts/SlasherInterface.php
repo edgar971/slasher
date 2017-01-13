@@ -8,9 +8,13 @@ interface SlasherInterface {
 
     /**
      * @return mixed
-     * @return CommandInterface
      */
-    public function handle(Request $request);
+    public function run();
+
+    /**
+     * @return mixed
+     */
+    public function getCommands();
 
 
 

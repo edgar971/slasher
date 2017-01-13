@@ -7,7 +7,36 @@ use Envano\Slasher\App\Contracts\InputInterface;
 class Input implements InputInterface {
 
 
+    /**
+     * @var
+     */
+    protected $text;
 
+    /**
+     * @var
+     */
+    protected $command;
+
+    /**
+     * @var
+     */
+    protected $arguments;
+
+    /**
+     * @var
+     */
+    protected $options;
+
+
+
+    public function __construct($text, $command,$arguments  = [], $options = []) {
+
+        $this->text = $text;
+        $this->command = $command;
+        $this->arguments = $arguments;
+        $this->options = $options;
+
+    }
 
     /**
      * @inheritDoc
