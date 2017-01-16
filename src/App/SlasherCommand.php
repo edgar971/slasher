@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Envano\Slasher\App\Contracts\CommandInterface;
 
 
-class Command implements CommandInterface {
+class SlasherCommand implements CommandInterface {
 
     /**
      * @var string
@@ -30,6 +30,11 @@ class Command implements CommandInterface {
      */
     protected $signature;
 
+    /**
+     * @var string
+     */
+    protected $description;
+
 
     /**
      * @var Request
@@ -46,49 +51,55 @@ class Command implements CommandInterface {
     /**
      * @inheritDoc
      */
-    public function getCommandName()
-    {
-        // TODO: Implement getCommand() method.
+    public function getCommandName() {
+
+        return $this->name;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function getSignature()
-    {
-        // TODO: Implement getDefinition() method.
+    public function getSignature() {
+
+        return $this->signature;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function getDescription()
-    {
-        // TODO: Implement getDescription() method.
+    public function getDescription() {
+
+        return $this->description;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function getRequest()
-    {
-        // TODO: Implement getRequest() method.
+    public function getRequest() {
+
+        return $this->request;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function getInput()
-    {
-        // TODO: Implement getInput() method.
+    public function getInput() {
+
+       return $this->input;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function getOutput()
-    {
-        // TODO: Implement getOutput() method.
+    public function getOutput() {
+
+        return $this->outout;
+
     }
 
     /**
@@ -101,6 +112,10 @@ class Command implements CommandInterface {
         if($exists) {
 
             return call_user_func_array([$this, $this->method],[]);
+
+        } else {
+
+            return false;
 
         }
 

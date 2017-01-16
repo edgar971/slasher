@@ -7,7 +7,7 @@ interface OutputInterface {
 
     public function getOutput();
 
-    public function setOutput();
+    public function setOutput($output);
 
     public function hasOutput();
 

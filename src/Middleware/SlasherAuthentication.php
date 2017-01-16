@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class SlasherAuthentication {
 
-
     /**
      * Handle the incoming request.
      *
@@ -28,6 +27,5 @@ class SlasherAuthentication {
         return $next($request);
 
     }
-
 
 }

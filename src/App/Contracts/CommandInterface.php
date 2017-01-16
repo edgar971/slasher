@@ -3,6 +3,8 @@
 namespace Envano\Slasher\App\Contracts;
 
 
+use Illuminate\Http\Request;
+
 interface CommandInterface {
 
     /**
@@ -21,7 +23,7 @@ interface CommandInterface {
     public function getDescription();
 
     /**
-     * @return
+     * @return Request;
      */
     public function getRequest();
 

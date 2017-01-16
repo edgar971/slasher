@@ -6,21 +6,26 @@ use Envano\Slasher\App\Contracts\OutputInterface;
 
 class Output implements OutputInterface {
 
+    /**
+     * @var
+     */
+    protected $output;
+
     public function getOutput() {
 
-        // TODO: Implement getOutput() method.
+        return $this->output;
 
     }
 
-    public function setOutput() {
+    public function setOutput($output) {
 
-        // TODO: Implement setOutput() method.
+        $this->output = $output;
 
     }
 
     public function hasOutput() {
 
-        // TODO: Implement hasOutput() method.
+       // check if the string is empty or null.
 
     }
 
