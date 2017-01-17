@@ -37,11 +37,6 @@ class SlasherCommand implements CommandInterface {
 
 
     /**
-     * @var Request
-     */
-    protected $request;
-
-    /**
      * The method called to run the comman
      * @var string
      */
@@ -75,14 +70,6 @@ class SlasherCommand implements CommandInterface {
 
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function getRequest() {
-
-        return $this->request;
-
-    }
 
     /**
      * @inheritDoc
@@ -120,6 +107,12 @@ class SlasherCommand implements CommandInterface {
         }
 
     }
+
+    /**
+     * This function will be called when the command is executed
+     * @return mixed
+     */
+    abstract protected function handle();
 
 
 }

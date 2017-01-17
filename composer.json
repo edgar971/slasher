@@ -10,9 +10,14 @@
     "autoload": {
         "psr-4": {
             "Envano\\Slasher\\": "src/"
-        },
+        }
+    },
+    "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php"
+            "tests/TestCase.php",
+            "tests/app/ExampleCommand.php",
+            "tests/app/ExampleSlasher.php"
+
         ]
     },
     "require-dev": {

@@ -23,11 +23,6 @@ interface CommandInterface {
     public function getDescription();
 
     /**
-     * @return Request;
-     */
-    public function getRequest();
-
-    /**
      * @return mixed
      */
     public function getInput();

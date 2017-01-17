@@ -2,7 +2,7 @@
 
 namespace Envano\Slasher\Exceptions;
 
-class MissingMethodException extends \Exception {
+class SlasherException extends \Exception {
 
 
 

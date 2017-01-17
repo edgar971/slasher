@@ -2,6 +2,8 @@
 
 namespace Envano\Slasher\App;
 
+use Envano\Slasher\App\Contracts\CommandInterface;
+use Envano\Slasher\Exceptions\EmptyTextInputException;
 use Illuminate\Http\Request;
 use Envano\Slasher\App\Contracts\SlasherInterface;
 
@@ -15,6 +17,12 @@ class Slasher implements SlasherInterface {
     protected $commands = [];
 
     /**
+     * @var array
+     */
+    protected $bootstrap_commands = [];
+
+
+    /**
      * @var Request
      */
     protected $request;
@@ -26,6 +34,17 @@ class Slasher implements SlasherInterface {
 
 
     /**
+     * Slasher constructor.
+     *
+     * @param Request $request
+     */
+    public function __construct(Request $request) {
+
+        $this->request = $request;
+
+    }
+
+    /**
      * @inheritDoc
      */
     public function getCommands() {
@@ -34,10 +53,17 @@ class Slasher implements SlasherInterface {
 
     }
 
+    protected function bootstrap() {
+
+        // Process commands
+        $this->processCommands();
+
+    }
+
     /**
      *
      */
-    protected function processCommands() {
+    private function processCommands() {
 
         if(empty($this->commands)) {
 
@@ -46,16 +72,26 @@ class Slasher implements SlasherInterface {
         }
 
         // Bootstrap and configure each command.
+        /**
+         * @var CommandInterface $command
+         */
         foreach($this->commands as $command) {
 
-            var_dump($command);
+            // Create instance
+
+            // Add to array with command name as key
 
         }
 
     }
 
-    protected function findCommand($name) {
+    public function getRequest() {
 
+        return $this->request;
+
+    }
+
+    public function getCommand($name) {
 
 
     }
@@ -63,12 +99,22 @@ class Slasher implements SlasherInterface {
 
     protected function processRequest(Request $request) {
 
+        $text = $request->input('text');
+
+        if(empty($text)) {
+
+            throw new EmptyTextInputException('The request text input cannot be empty!');
+
+        }
+
+        $args = $this->parseText($text);
 
 
 
     }
 
-    protected function parseText($text) {
+    private function parseText($text) {
+
 
 
     }
@@ -79,8 +125,6 @@ class Slasher implements SlasherInterface {
      * @inheritdoc
      */
     public function run() {
-
-        $this->processCommands();
 
         // Get Text
         $text = $this->processRequest($this->request);

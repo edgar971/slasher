@@ -16,6 +16,20 @@ interface SlasherInterface {
      */
     public function getCommands();
 
+    /**
+     * @param $name
+     * @return mixed
+     */
+    public function getCommand($name);
+
+    /**
+     *
+     * @return Request
+     */
+    public function getRequest();
+
+
+
 
 
 }
