@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 
-class TestCase extends Illuminate\Foundation\Testing\TestCase {
+class TestCase extends \PHPUnit\Framework\TestCase {
 
     /**
      * @var

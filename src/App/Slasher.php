@@ -39,10 +39,16 @@ class Slasher implements SlasherInterface {
      */
     protected function processCommands() {
 
+        if(empty($this->commands)) {
+
+            return false;
+
+        }
+
         // Bootstrap and configure each command.
         foreach($this->commands as $command) {
 
-
+            var_dump($command);
 
         }
 

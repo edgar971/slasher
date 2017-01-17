@@ -7,7 +7,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class SlasherMiddlewareTest extends TestCase {
 
 
-
     /**
      * Test Slasher Authentication Middleware
      *
