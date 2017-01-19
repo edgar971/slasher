@@ -16,20 +16,20 @@ class SlasherMainTest extends TestCase {
 
         $request = $this->slasher->getRequest();
 
-        $this->assertInstanceOf(\Illuminate\Http\Request::class, $request);
+        $this->assertInstanceOf(\Envano\Slasher\App\SlashRequest::class, $request);
 
     }
 
 
-    public function testGetCommand() {
-
-        $command_name = 'todo:add';
-        $command = $this->slasher->getCommand($command_name);
-
-        $this->assertInstanceOf(\Envano\Slasher\App\Contracts\CommandInterface::class, $command);
-
-
-    }
+//    public function testGetCommand() {
+//
+//        $command_name = 'todo:add';
+//        $command = $this->slasher->getCommand($command_name);
+//
+//        $this->assertInstanceOf(\Envano\Slasher\App\Contracts\CommandInterface::class, $command);
+//
+//
+//    }
 
 
 }

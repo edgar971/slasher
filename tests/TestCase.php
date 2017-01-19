@@ -26,7 +26,7 @@ class TestCase extends \PHPUnit\Framework\TestCase {
             "response_url" => "not supported yet",
             "team_domain" => "development",
             "team_id" => "ebk7htftntyzuck3zxcvrfbkhh",
-            "text" => "todo:add example",
+            "text" => "todo:add example --test=yes",
             "token" => "efw13jk3clkjipseskai3sdfzo",
             "user_id" => "1gsssgdm67fymce69q1oponucr",
             "user_name" => "edgarpino"

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Envano\Slasher\App\Contracts\CommandInterface;
 
 
-class SlasherCommand implements CommandInterface {
+abstract class SlasherCommand implements CommandInterface {
 
     /**
      * @var string
@@ -42,6 +42,13 @@ class SlasherCommand implements CommandInterface {
      */
     protected $method = 'handle';
 
+
+    public function __construct(Input $input) {
+
+        $this->input = $input;
+        $this->outout = new Output();
+
+    }
 
     /**
      * @inheritDoc
@@ -98,13 +105,11 @@ class SlasherCommand implements CommandInterface {
 
         if($exists) {
 
-            return call_user_func_array([$this, $this->method],[]);
-
-        } else {
-
-            return false;
+            call_user_func_array([$this, $this->method],[]);
 
         }
+
+        return $this->outout;
 
     }
 

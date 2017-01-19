@@ -13,17 +13,22 @@ interface InputInterface {
     /**
      * @return mixed
      */
+    public function getCommandName();
+
+    /**
+     * @return mixed
+     */
     public function getArguments();
 
     /**
      * @return mixed
      */
-    public function getArgument();
+    public function getArgument($name);
 
     /**
      * @return mixed
      */
-    public function hasArgument();
+    public function hasArgument($name);
 
     /**
      * @return mixed
@@ -33,12 +38,12 @@ interface InputInterface {
     /**
      * @return mixed
      */
-    public function getOption();
+    public function getOption($name);
 
     /**
      * @return mixed
      */
-    public function hasOption();
+    public function hasOption($name);
 
 
 

@@ -20,7 +20,7 @@ interface SlasherInterface {
      * @param $name
      * @return mixed
      */
-    public function getCommand($name);
+    public function searchCommand($name);
 
     /**
      *

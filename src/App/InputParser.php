@@ -3,21 +3,28 @@
 namespace Envano\Slasher\App;
 
 use Envano\Slasher\App\Contracts\InputParserInterface;
+use Envano\Slasher\Exceptions\EmptyTextInputException;
 
 class InputParser implements InputParserInterface {
 
     /**
      * @inheritdoc
      */
-    public static function parse($text) {
+    public static function parse(SlashRequest $request) {
 
-        if(empty(trim($text,''))) return false;
+        $text = $request->getText();
+
+        if(empty($text)) {
+
+            throw new EmptyTextInputException('The request text input cannot be empty!');
+
+        }
 
         $arguments = self::parseArguments($text);
         $options = self::parseOptions($text);
         $command = self::parseCommandName($text);
 
-        $input = new Input($text,$command,$arguments,$options);
+        $input = new Input($text,$request,$command,$arguments,$options);
 
         return $input;
 

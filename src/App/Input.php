@@ -15,7 +15,7 @@ class Input implements InputInterface {
     /**
      * @var
      */
-    protected $command;
+    protected $command_name;
 
     /**
      * @var
@@ -27,12 +27,18 @@ class Input implements InputInterface {
      */
     protected $options;
 
+    /**
+     * @var SlashRequest
+     */
+    public $request;
 
 
-    public function __construct($text, $command,$arguments  = [], $options = []) {
+
+    public function __construct($text, SlashRequest $request ,$command_name, $arguments  = [], $options = []) {
 
         $this->text = $text;
-        $this->command = $command;
+        $this->request = $request;
+        $this->command_name = $command_name;
         $this->arguments = $arguments;
         $this->options = $options;
 
@@ -41,56 +47,68 @@ class Input implements InputInterface {
     /**
      * @inheritDoc
      */
-    public function getText()
-    {
-        // TODO: Implement getText() method.
+    public function getCommandName() {
+
+        return $this->command_name;
+
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function getText() {
+
+        return $this->text;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function getArguments()
-    {
-        // TODO: Implement getArguments() method.
+    public function getArguments() {
+
+        return $this->arguments;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function getArgument()
-    {
+    public function getArgument($name) {
+
         // TODO: Implement getArgument() method.
     }
 
     /**
      * @inheritDoc
      */
-    public function hasArgument()
-    {
+    public function hasArgument($name) {
+
         // TODO: Implement hasArgument() method.
+
     }
 
     /**
      * @inheritDoc
      */
-    public function getOptions()
-    {
-        // TODO: Implement getOptions() method.
+    public function getOptions() {
+
+       return $this->options;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function getOption()
-    {
+    public function getOption($name) {
         // TODO: Implement getOption() method.
     }
 
     /**
      * @inheritDoc
      */
-    public function hasOption()
-    {
+    public function hasOption($name) {
         // TODO: Implement hasOption() method.
     }
 

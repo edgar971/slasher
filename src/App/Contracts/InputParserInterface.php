@@ -2,12 +2,14 @@
 
 namespace Envano\Slasher\App\Contracts;
 
+use Envano\Slasher\App\SlashRequest;
+
 interface InputParserInterface {
 
     /**
-     * @param $text
-     * @return InputInterface|bool
+     * @param SlashRequest $request
+     * @return mixed
      */
-    public static function parse($text);
+    public static function parse(SlashRequest $request);
 
 }
