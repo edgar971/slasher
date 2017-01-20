@@ -3,6 +3,8 @@
 namespace Envano\Slasher\App\Contracts;
 
 
+use Envano\Slasher\App\Output;
+
 interface CommandInterface {
 
     /**
@@ -26,7 +28,7 @@ interface CommandInterface {
     public function getInput();
 
     /**
-     * @return mixed
+     * @return Output
      */
     public function getOutput();
 

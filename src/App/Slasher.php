@@ -36,6 +36,11 @@ class Slasher implements SlasherInterface {
      */
     protected $text;
 
+    /**
+     * @var Input
+     */
+    protected $input;
+
 
     /**
      * Slasher constructor.
@@ -45,6 +50,12 @@ class Slasher implements SlasherInterface {
     public function __construct(Request $request) {
 
         $this->request = new SlashRequest($request);
+
+        // Process Request
+        $this->input = $this->processRequest($this->request);
+
+        // Bootstrap stuff
+        $this->processCommands($this->input);
 
 
     }
@@ -92,6 +103,16 @@ class Slasher implements SlasherInterface {
     }
 
     /**
+     * @inheritDoc
+     */
+    public function getInput() {
+
+        return $this->input;
+
+    }
+
+
+    /**
      * @param $name
      * @return CommandInterface
      * @throws SlasherException
@@ -126,19 +147,13 @@ class Slasher implements SlasherInterface {
 
     }
 
-        /**
+    /**
      * @inheritdoc
      */
     public function run() {
 
-        // Process Request
-        $input = $this->processRequest($this->request);
-
-        // Bootstrap stuff
-        $this->processCommands($input);
-
         // Find command
-        $command_name = $input->getCommandName();
+        $command_name = $this->input->getCommandName();
         $command = $this->searchCommand($command_name);
 
         // Execute command

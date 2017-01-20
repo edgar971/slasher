@@ -75,17 +75,9 @@ class Input implements InputInterface {
     /**
      * @inheritDoc
      */
-    public function getArgument($name) {
+    public function hasArguments() {
 
-        // TODO: Implement getArgument() method.
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function hasArgument($name) {
-
-        // TODO: Implement hasArgument() method.
+        return !empty($this->arguments);
 
     }
 

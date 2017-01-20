@@ -21,15 +21,34 @@ class SlasherMainTest extends TestCase {
     }
 
 
-//    public function testGetCommand() {
-//
-//        $command_name = 'todo:add';
-//        $command = $this->slasher->getCommand($command_name);
-//
-//        $this->assertInstanceOf(\Envano\Slasher\App\Contracts\CommandInterface::class, $command);
-//
-//
-//    }
+    public function testGetCommand() {
+
+        $command_name = 'todo:add';
+        $command = $this->slasher->searchCommand($command_name);
+
+        $this->assertInstanceOf(\Envano\Slasher\App\Contracts\CommandInterface::class, $command);
+
+
+    }
+
+    public function testSlasherRun() {
+
+        $output = $this->slasher->run();
+
+        $this->assertInstanceOf(\Envano\Slasher\App\Output::class,$output);
+
+
+    }
+
+    public function testSlashInput() {
+
+        $input = $this->slasher->getInput();
+
+        $this->assertInstanceOf(\Envano\Slasher\App\Input::class, $input);
+
+
+    }
+
 
 
 }

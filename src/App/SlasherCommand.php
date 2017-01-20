@@ -55,7 +55,7 @@ abstract class SlasherCommand implements CommandInterface {
      */
     public function getCommandName() {
 
-        return $this->name;
+        return trim($this->name);
 
     }
 
@@ -115,6 +115,7 @@ abstract class SlasherCommand implements CommandInterface {
 
     /**
      * This function will be called when the command is executed
+     *
      * @return mixed
      */
     abstract protected function handle();

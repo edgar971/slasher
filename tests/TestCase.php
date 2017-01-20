@@ -14,6 +14,8 @@ class TestCase extends \PHPUnit\Framework\TestCase {
      */
     protected $request;
 
+    protected $command_name = 'todo:add';
+
     /**
      * @var
      */
@@ -26,7 +28,7 @@ class TestCase extends \PHPUnit\Framework\TestCase {
             "response_url" => "not supported yet",
             "team_domain" => "development",
             "team_id" => "ebk7htftntyzuck3zxcvrfbkhh",
-            "text" => "todo:add example --test=yes",
+            "text" => "todo:add example \"I need an example\" 'edgar'  --debug=yes --notify=epino@envano.com --ignore",
             "token" => "efw13jk3clkjipseskai3sdfzo",
             "user_id" => "1gsssgdm67fymce69q1oponucr",
             "user_name" => "edgarpino"
@@ -38,8 +40,6 @@ class TestCase extends \PHPUnit\Framework\TestCase {
     public function __construct() {
 
         $slasher = $this->createSlasherInstance();
-
-        $slasher->run();
 
     }
 

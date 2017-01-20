@@ -116,7 +116,7 @@ class SlashRequest implements SlashRequestInterface {
      */
     public function getText() {
 
-        return $this->text;
+        return trim($this->text);
 
     }
 

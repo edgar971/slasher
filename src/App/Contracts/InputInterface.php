@@ -21,14 +21,9 @@ interface InputInterface {
     public function getArguments();
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getArgument($name);
-
-    /**
-     * @return mixed
-     */
-    public function hasArgument($name);
+    public function hasArguments();
 
     /**
      * @return mixed
