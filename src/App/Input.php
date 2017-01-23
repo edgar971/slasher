@@ -94,14 +94,25 @@ class Input implements InputInterface {
      * @inheritDoc
      */
     public function getOption($name) {
-        // TODO: Implement getOption() method.
+
+        if($this->hasOption($name)) {
+
+            return $this->options[$name];
+
+        } else {
+
+            return null;
+
+        }
     }
 
     /**
      * @inheritDoc
      */
     public function hasOption($name) {
-        // TODO: Implement hasOption() method.
+
+        return isset($this->options[$name]);
+
     }
 
 
