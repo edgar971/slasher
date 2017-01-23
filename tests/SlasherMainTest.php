@@ -35,7 +35,7 @@ class SlasherMainTest extends TestCase {
 
         $output = $this->slasher->run();
 
-        $this->assertInstanceOf(\Envano\Slasher\App\Output::class,$output);
+        $this->assertInstanceOf(\Envano\Slasher\App\SlasherResponse::class,$output);
 
 
     }

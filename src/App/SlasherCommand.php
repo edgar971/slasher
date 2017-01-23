@@ -3,7 +3,7 @@
 namespace Envano\Slasher\App;
 
 use Envano\Slasher\App\Contracts\InputInterface;
-use Envano\Slasher\App\Contracts\OutputInterface;
+use Envano\Slasher\App\Contracts\SlasherResponseInterface;
 use Illuminate\Http\Request;
 use Envano\Slasher\App\Contracts\CommandInterface;
 
@@ -21,9 +21,9 @@ abstract class SlasherCommand implements CommandInterface {
     protected $input;
 
     /**
-     * @var OutputInterface
+     * @var SlasherResponse
      */
-    protected $outout;
+    protected $response;
 
     /**
      * @var string
@@ -46,7 +46,7 @@ abstract class SlasherCommand implements CommandInterface {
     public function __construct(Input $input) {
 
         $this->input = $input;
-        $this->outout = new Output();
+        $this->response = new SlasherResponse();
 
     }
 
@@ -92,7 +92,7 @@ abstract class SlasherCommand implements CommandInterface {
      */
     public function getOutput() {
 
-        return $this->outout;
+        return $this->response;
 
     }
 
@@ -109,7 +109,7 @@ abstract class SlasherCommand implements CommandInterface {
 
         }
 
-        return $this->outout;
+        return $this->response;
 
     }
 
