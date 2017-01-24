@@ -33,6 +33,9 @@ class SlasherMainTest extends TestCase {
 
     public function testSlasherRun() {
 
+        /**
+         * @var $output \Envano\Slasher\App\SlasherResponse
+         */
         $output = $this->slasher->run();
 
         $this->assertInstanceOf(\Envano\Slasher\App\SlasherResponse::class,$output);

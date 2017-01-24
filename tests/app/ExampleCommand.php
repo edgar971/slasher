@@ -17,6 +17,9 @@ class ExampleCommand extends \Envano\Slasher\App\SlasherCommand {
         $b = 2;
 
 
+        $this->response->withText('it works!');
+
+
     }
 
 

@@ -31,9 +31,10 @@ interface SlasherResponseInterface {
     public function displayToUserOnly();
 
     /**
+     * @param string $channel
      * @return SlasherResponseInterface
      */
-    public function displayToChannel();
+    public function displayToChannel($channel);
 
     /**
      * @return SlasherResponseInterface
@@ -47,7 +48,7 @@ interface SlasherResponseInterface {
     public function useIcon($string);
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getIconType();
 

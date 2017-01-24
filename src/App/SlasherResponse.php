@@ -9,6 +9,9 @@ use Illuminate\Support\Collection;
 class SlasherResponse implements SlasherResponseInterface {
 
 
+    const SLASHER_RESPONSE_TO_USER = 'ephemeral';
+    const SLASHER_RESPONSE_TO_CHANNEL = 'in_channel';
+
     /**
      * @var SlashRequest
      */
@@ -44,65 +47,117 @@ class SlasherResponse implements SlasherResponseInterface {
     /**
      * @inheritDoc
      */
-    public function getResponse()
-    {
-        // TODO: Implement getResponse() method.
+    public function getResponse() {
+
+
+        if(is_null($this->response_type)) {
+
+            $this->displayToUserOnly();
+
+        }
+
+        $response_data = [
+            'text' => $this->text,
+            'channel' => $this->channel,
+            'link_names' => true,
+            'unfurl_links' => true,
+            'unfurl_media' => true,
+            'mrkdwn' => true,
+            'response_type' => $this->response_type
+        ];
+
+
+        if (! empty($this->icon)) {
+            $response_data[$this->getIconType()] = $this->icon;
+        }
+
+        return $response_data;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function withText($text)
-    {
-        // TODO: Implement withText() method.
+    public function withText($text) {
+
+       $this->text = $text;
+
+       return $this;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function onChannel($channel)
-    {
-        // TODO: Implement onChannel() method.
+    public function onChannel($channel) {
+
+        $this->channel = $channel;
+
+        return $this;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function displayToUserOnly()
-    {
-        // TODO: Implement displayToUserOnly() method.
+    public function displayToUserOnly() {
+
+        $this->response_type = self::SLASHER_RESPONSE_TO_USER;
+
+        return $this;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function displayToChannel()
-    {
-        // TODO: Implement displayToChannel() method.
+    public function displayToChannel($channel) {
+
+        $this->response_type = self::SLASHER_RESPONSE_TO_CHANNEL;
+
+        if(!empty($channel)) {
+
+            $this->onChannel($channel);
+
+        }
+
+        return $this;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function withAttachment()
-    {
+    public function withAttachment() {
+
         // TODO: Implement withAttachment() method.
+
     }
 
     /**
      * @inheritDoc
      */
-    public function useIcon($string)
-    {
-        // TODO: Implement useIcon() method.
+    public function useIcon($icon) {
+
+        $this->icon = $icon;
+
+        return $this;
+
     }
 
     /**
      * @inheritDoc
      */
-    public function getIconType()
-    {
-        // TODO: Implement getIconType() method.
+    public function getIconType() {
+
+        if (empty($this->icon)) {
+            return '';
+        }
+        if (starts_with($this->icon, ':') && ends_with($this->icon, ':')) {
+            return 'icon_emoji';
+        }
+        return 'icon_url';
+
     }
 
 
