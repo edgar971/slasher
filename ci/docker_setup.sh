@@ -5,8 +5,8 @@
 [[ ! -e /.dockerenv ]] && exit 0
 
 set -xe
-
-apk --update add \
+apt-get update
+apt-get install \
     autoconf \
     build-base \
     git -yqq \
