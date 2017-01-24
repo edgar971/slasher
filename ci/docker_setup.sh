@@ -25,6 +25,8 @@ apk --update add \
 curl --location --output /usr/local/bin/phpunit https://phar.phpunit.de/phpunit.phar
 chmod +x /usr/local/bin/phpunit
 
+export COMPOSER_ALLOW_SUPERUSER=1
+
 # Memory Limit
 echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
 # Time Zone
