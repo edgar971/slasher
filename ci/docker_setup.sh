@@ -6,13 +6,29 @@
 
 set -xe
 
-# Install git (the php image doesn't have it) which is required by composer
-apt-get update -yqq
-apt-get install git -yqq
+apk --update add \
+    autoconf \
+    build-base \
+    git -yqq \
+    libmcrypt-dev \
+    libbz2 \
+    libstdc++ \
+    libxslt-dev \
+    make \
+    unzip \
+    wget && \
+    docker-php-ext-install bcmath mcrypt zip bz2 mbstring pcntl xsl && \
+    apk del build-base && \
+    rm -rf /var/cache/apk/*
 
 # Install phpunit, the tool that we will use for testing
 curl --location --output /usr/local/bin/phpunit https://phar.phpunit.de/phpunit.phar
 chmod +x /usr/local/bin/phpunit
+
+# Memory Limit
+echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
+# Time Zone
+echo "date.timezone=${PHP_TIMEZONE:-UTC}" > $PHP_INI_DIR/conf.d/date_timezone.ini
 
 # Install composer
 curl -sS https://getcomposer.org/installer | php && \
